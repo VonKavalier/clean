@@ -1,25 +1,26 @@
 ﻿#! /bin/sh 
 
-echo "------------------------------------"
-echo "| Lancement du script de nettoyage |"
-echo "------------------------------------"
+echo "----------------------------"
+echo "| Starting cleaning script |"
+echo "----------------------------"
 
-echo "\n- Suppression du cache des paquets supprimés"
+echo "\n- Clearing cache of removed packages"
 sudo apt-get autoclean
 
-echo "\n- Suppression de tout le cache"
+echo "\n- Clearing entire cache"
 sudo apt-get clean
 
-echo "\n- Suppression des dépendances inutiles"
+echo "\n- Removing unnecessary dependencies"
 sudo apt-get autoremove
 
-echo "\n- Suppression des fichiers de configuration obsolètes"
+# It will tell if nothing is found with the grep, don't worry it's ok. Relax
+echo "\n- Removing obsolete configuration files"
 sudo dpkg --purge $(COLUMNS=200 dpkg -l | grep "^rc" | tr -s ' ' | cut -d ' ' -f 2)
 
-echo "\n- Suppression de la corbeille"
+echo "\n- Removing Trash"
 sudo rm -r -f ~/.local/share/Trash/*/*
 
-echo "\n- Suppression des miniatures"
+echo "\n- Removing thumbnails"
 sudo rm -rf ~/.thumbnails/normal/*
 
-echo "\n* Merci de faire confiance à notre équipe de nettoyage :) Bonne journée !"
+echo "\n* Thank you for trusting our cleaning team ! :) Have a good day !"
