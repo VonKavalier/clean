@@ -5,13 +5,13 @@ echo "| Starting cleaning script |"
 echo "----------------------------"
 
 echo "\n- Clearing cache of removed packages"
-sudo apt-get autoclean
+sudo apt autoclean
 
 echo "\n- Clearing entire cache"
-sudo apt-get clean
+sudo apt clean
 
 echo "\n- Removing unnecessary dependencies"
-sudo apt-get autoremove
+sudo apt autoremove
 
 # It will tell if nothing is found with the grep, don't worry it's ok. Relax
 echo "\n- Removing obsolete configuration files"
